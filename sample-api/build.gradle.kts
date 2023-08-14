@@ -16,4 +16,5 @@ application {
 dependencies {
     implementation(libs.ktor.core)
     implementation(libs.ktor.netty)
+    implementation(libs.kotlin.result)
 }
