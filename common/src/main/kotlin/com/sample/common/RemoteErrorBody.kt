@@ -1,4 +1,4 @@
-package com.sample.client.smt.data
+package com.sample.common
 
 import kotlinx.serialization.Serializable
 

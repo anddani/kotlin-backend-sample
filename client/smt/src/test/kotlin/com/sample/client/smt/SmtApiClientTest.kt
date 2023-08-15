@@ -1,7 +1,8 @@
 package com.sample.client.smt
 
 import com.sample.client.smt.data.RemoteDemon
-import com.sample.client.smt.data.RemoteErrorBody
+import com.sample.common.RemoteErrorBody
+import com.sample.common.ApiError
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.toResultOr

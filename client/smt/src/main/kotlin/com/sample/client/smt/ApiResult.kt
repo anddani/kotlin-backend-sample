@@ -1,24 +1,11 @@
 package com.sample.client.smt
 
+import com.sample.common.ApiError
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import io.ktor.client.call.*
 import io.ktor.client.statement.*
-
-sealed interface ApiError <T> {
-    object UnexpectedError : ApiError<Nothing>
-    data class FailedToParse(val statusCode: Int) : ApiError<Nothing>
-    data class ServerError(
-        val statusCode: Int,
-        val statusMessage: String,
-    ) : ApiError<Nothing>
-    data class ClientError<T>(
-        val statusCode: Int,
-        val statusMessage: String,
-        val body: T?,
-    ) : ApiError<T>
-}
 
 suspend inline fun <reified T, reified U> wrapApiCallToResult(call: () -> HttpResponse): Result<T, ApiError<U>> {
     val result = try {
