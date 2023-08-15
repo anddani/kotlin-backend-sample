@@ -14,7 +14,9 @@ application {
 }
 
 dependencies {
-    implementation(libs.ktor.core)
-    implementation(libs.ktor.netty)
+    implementation(libs.ktor.server.core)
+    implementation(libs.ktor.server.netty)
     implementation(libs.kotlin.result)
+
+    implementation(project(":client:smt"))
 }
