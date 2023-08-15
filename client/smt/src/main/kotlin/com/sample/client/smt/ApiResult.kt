@@ -8,6 +8,7 @@ import io.ktor.client.statement.*
 
 sealed interface ApiError <T> {
     object UnexpectedError : ApiError<Nothing>
+    data class FailedToParse(val statusCode: Int) : ApiError<Nothing>
     data class ServerError(
         val statusCode: Int,
         val statusMessage: String,
@@ -24,7 +25,6 @@ suspend inline fun <reified T, reified U> wrapApiCallToResult(call: () -> HttpRe
         call()
     } catch (e: Exception) {
         e.printStackTrace()
-        println("Fail")
         return Err(ApiError.UnexpectedError as ApiError<U>)
     }
     return when (result.status.value) {
@@ -32,14 +32,17 @@ suspend inline fun <reified T, reified U> wrapApiCallToResult(call: () -> HttpRe
             Ok(result.body<T>())
         } catch (e: Exception) {
             e.printStackTrace()
-            println("Class ${T::class.java}")
-            Err(ApiError.UnexpectedError as ApiError<U>)
+            Err(ApiError.FailedToParse(result.status.value) as ApiError<U>)
         }
 
         in 400..499 -> Err(ApiError.ClientError(
             statusCode = result.status.value,
             statusMessage = result.status.description,
-            body = result.body() as U
+            body = try {
+                result.body<U>()
+            } catch (e: Exception) {
+                null
+            }
         ))
 
         in 500..599 -> Err(ApiError.ServerError(

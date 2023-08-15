@@ -20,4 +20,9 @@ dependencies {
     implementation(libs.kotlin.result)
     implementation(libs.dagger.api)
     kapt(libs.dagger.compiler)
+
+    testImplementation(libs.ktor.client.mock)
+    testImplementation(libs.junit)
+    testImplementation(libs.truth)
+    testImplementation(libs.coroutines.test)
 }
