@@ -1,8 +1,8 @@
-package com.sample.client.smt
+package com.anddani.client.smt
 
-import com.sample.client.smt.data.RemoteDemon
-import com.sample.common.RemoteErrorBody
-import com.sample.common.ApiError
+import com.anddani.client.smt.data.RemoteDemon
+import com.anddani.common.RemoteErrorBody
+import com.anddani.common.ApiError
 import com.github.michaelbull.result.Result
 
 interface SmtApiClient {

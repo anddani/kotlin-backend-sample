@@ -1,6 +1,6 @@
-package com.sample.client.smt
+package com.anddani.client.smt
 
-import com.sample.common.ApiError
+import com.anddani.common.ApiError
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result

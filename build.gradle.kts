@@ -5,7 +5,7 @@ plugins {
     application
 }
 
-group = "org.sample"
+group = "com.anddani"
 version = "1.0"
 
 tasks.withType<KotlinCompile> {

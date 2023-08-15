@@ -1,8 +1,8 @@
-package com.sample.sampleapi.dagger
+package com.anddani.sampleapi.dagger
 
-import com.sample.client.smt.SmtApiClient
-import com.sample.client.smt.SmtApiClientModule
-import com.sample.client.smt.SmtHttpClientModule
+import com.anddani.client.smt.SmtApiClient
+import com.anddani.client.smt.SmtApiClientModule
+import com.anddani.client.smt.SmtHttpClientModule
 import dagger.Component
 import javax.inject.Singleton
 

@@ -1,8 +1,8 @@
-package com.sample.service.smt
+package com.anddani.service.smt
 
-import com.sample.client.smt.SmtApiClient
-import com.sample.client.smt.data.RemoteDemon
-import com.sample.common.FetchAndPersistDemonError
+import com.anddani.client.smt.SmtApiClient
+import com.anddani.client.smt.data.RemoteDemon
+import com.anddani.common.FetchAndPersistDemonError
 import com.github.michaelbull.result.Result
 import com.github.michaelbull.result.coroutines.binding.binding
 import com.github.michaelbull.result.mapError

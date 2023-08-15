@@ -1,4 +1,4 @@
-package com.sample.common
+package com.anddani.common
 
 sealed interface ApiError <T> {
     object UnexpectedError : ApiError<Nothing>

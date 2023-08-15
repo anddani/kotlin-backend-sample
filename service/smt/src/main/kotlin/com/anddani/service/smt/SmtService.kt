@@ -1,6 +1,6 @@
-package com.sample.service.smt
+package com.anddani.service.smt
 
-import com.sample.common.FetchAndPersistDemonError
+import com.anddani.common.FetchAndPersistDemonError
 import com.github.michaelbull.result.Result
 
 interface SmtService {

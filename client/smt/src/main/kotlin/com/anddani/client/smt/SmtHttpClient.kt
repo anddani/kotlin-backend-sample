@@ -1,4 +1,4 @@
-package com.sample.client.smt
+package com.anddani.client.smt
 
 import io.ktor.client.*
 import io.ktor.client.plugins.*

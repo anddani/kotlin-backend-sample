@@ -1,4 +1,4 @@
-package com.sample.common
+package com.anddani.common
 
 sealed interface InternalApiError
 

@@ -1,4 +1,4 @@
-package com.sample.client.smt
+package com.anddani.client.smt
 
 import dagger.Binds
 import dagger.Module
