@@ -1,0 +1,6 @@
+
+CREATE TABLE demon_skill (
+    demon_id INTEGER REFERENCES demon(id),
+    skill_id INTEGER REFERENCES skill(id),
+    CONSTRAINT demon_skill_pk PRIMARY KEY(demon_id, skill_id)
+);

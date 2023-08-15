@@ -11,7 +11,7 @@ tasks.withType<KotlinCompile> {
 }
 
 application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
+    mainClass.set("com.anddani.sampleapi.MainKt")
 }
 
 dependencies {
@@ -20,7 +20,9 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.kotlin.result)
     implementation(libs.dagger.api)
+    implementation(libs.hikari)
     kapt(libs.dagger.compiler)
 
     implementation(project(":client:smt"))
+    implementation(project(":repository:smt"))
 }

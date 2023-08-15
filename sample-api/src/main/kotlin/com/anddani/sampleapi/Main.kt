@@ -1,3 +1,6 @@
+package com.anddani.sampleapi
+
+import com.anddani.sampleapi.dagger.DaggerApplicationComponent
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*

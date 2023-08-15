@@ -1,9 +1,10 @@
 enableFeaturePreview("VERSION_CATALOGS")
 rootProject.name = "kotlin-backend-sample"
 
-include(":common")
-include(":sample-api")
 include(":client:smt")
+include(":common")
+include(":repository:smt")
+include(":sample-api")
 include(":service:smt")
 
 dependencyResolutionManagement {
