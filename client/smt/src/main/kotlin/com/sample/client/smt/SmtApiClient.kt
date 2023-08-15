@@ -5,8 +5,9 @@ import com.github.michaelbull.result.Result
 import io.ktor.client.*
 import io.ktor.client.request.*
 
-class SmtApiClient {
+class SmtApiClient(
     private val ktor: HttpClient = SmtHttpClient
+) {
 
     suspend fun getDemons(): Result<Map<String, RemoteDemon>, ApiError<Any?>> = wrapApiCallToResult {
         ktor.get("aqiu384/megaten-fusion-tool/master/src/app/smt4/data/demon-data.json")

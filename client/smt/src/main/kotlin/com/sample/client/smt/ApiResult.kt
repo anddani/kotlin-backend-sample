@@ -5,7 +5,6 @@ import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import io.ktor.client.call.*
 import io.ktor.client.statement.*
-import kotlinx.serialization.json.Json
 
 suspend inline fun <reified T, reified U> wrapApiCallToResult(call: () -> HttpResponse): Result<T, ApiError<U>> {
     val result = try {
@@ -29,10 +28,12 @@ suspend inline fun <reified T, reified U> wrapApiCallToResult(call: () -> HttpRe
             statusMessage = result.status.description,
             body = result.body() as U
         ))
+
         in 500..599 -> Err(ApiError.ServerError(
             statusCode = result.status.value,
             statusMessage = result.status.description,
         ) as ApiError<U>)
+
         else -> Err(ApiError.UnexpectedError as ApiError<U>)
     }
 }
