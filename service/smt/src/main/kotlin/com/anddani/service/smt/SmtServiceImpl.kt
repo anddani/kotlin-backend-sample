@@ -3,6 +3,7 @@ package com.anddani.service.smt
 import com.anddani.client.smt.SmtApiClient
 import com.anddani.client.smt.data.RemoteDemon
 import com.anddani.common.FetchAndPersistDemonError
+import com.anddani.repository.smt.SmtRepository
 import com.github.michaelbull.result.Result
 import com.github.michaelbull.result.coroutines.binding.binding
 import com.github.michaelbull.result.mapError
@@ -12,6 +13,7 @@ import javax.inject.Singleton
 @Singleton
 class SmtServiceImpl @Inject constructor(
     private val apiClient: SmtApiClient,
+    private val repository: SmtRepository,
 ) : SmtService {
 
     override suspend fun fetchAndPersistDemons(): Result<Unit, FetchAndPersistDemonError> = binding {
@@ -19,6 +21,6 @@ class SmtServiceImpl @Inject constructor(
             .mapError(FetchAndPersistDemonError::Api)
             .bind()
 
-        // TODO: Persist demons
+        repository.insertDemonsWithSkills(demons.toDemonWithSkills())
     }
 }

@@ -4,3 +4,12 @@ CREATE TABLE demon_skill (
     skill_id INTEGER REFERENCES skill(id),
     CONSTRAINT demon_skill_pk PRIMARY KEY(demon_id, skill_id)
 );
+
+insertDemonWithSkill {
+INSERT INTO demon(name) VALUES (:demon_name);
+INSERT INTO skill(name, cost) VALUES (:skill_name, :skill_cost);
+INSERT INTO demon_skill (demon_id, skill_id)
+SELECT demon.id, skill.id
+FROM demon, skill
+WHERE demon.name = :demon_name AND skill.name = :skill_name;
+}

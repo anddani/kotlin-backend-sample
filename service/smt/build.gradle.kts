@@ -13,6 +13,7 @@ tasks.withType<KotlinCompile> {
 dependencies {
     implementation(project(":common"))
     implementation(project(":client:smt"))
+    implementation(project(":repository:smt"))
     implementation(libs.kotlin.result)
     implementation(libs.dagger.api)
     kapt(libs.dagger.compiler)
