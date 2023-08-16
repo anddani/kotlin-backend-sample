@@ -1,10 +1,11 @@
 package com.anddani.sampleapi.dagger
 
-import com.anddani.client.smt.SmtApiClient
 import com.anddani.client.smt.SmtApiClientModule
 import com.anddani.client.smt.SmtHttpClientModule
 import com.anddani.repository.smt.SmtDatabaseModule
 import com.anddani.repository.smt.SmtRepositoryModule
+import com.anddani.service.smt.SmtService
+import com.anddani.service.smt.SmtServiceModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,8 +16,9 @@ import javax.inject.Singleton
         SmtHttpClientModule::class,
         SmtDatabaseModule::class,
         SmtRepositoryModule::class,
+        SmtServiceModule::class,
     ]
 )
 interface ApplicationComponent {
-    val smtApiClient: SmtApiClient
+    val smtService: SmtService
 }

@@ -10,11 +10,14 @@ import io.ktor.server.routing.*
 fun main(args: Array<String>) {
     println("Starting server...")
     val applicationComponent = DaggerApplicationComponent.builder().build()
-    val smtApiClient = applicationComponent.smtApiClient
+    val smtService = applicationComponent.smtService
     embeddedServer(Netty, 8080) {
         routing {
             get("/") {
-                call.respondText(smtApiClient.getDemons().toString())
+                call.respondText("Hello world!")
+            }
+            get("/search") {
+                val query = call.request.queryParameters["q"]
             }
         }
     }.start(wait = true)

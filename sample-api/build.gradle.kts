@@ -25,4 +25,5 @@ dependencies {
 
     implementation(project(":client:smt"))
     implementation(project(":repository:smt"))
+    implementation(project(":service:smt"))
 }
