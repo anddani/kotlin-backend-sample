@@ -1,0 +1,16 @@
+CREATE TABLE demon(
+    id SERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE skill (
+    id SERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    cost INTEGER NOT NULL
+);
+
+CREATE TABLE demon_skill (
+    demon_id INTEGER NOT NULL REFERENCES demon(id),
+    skill_id INTEGER NOT NULL REFERENCES skill(id),
+    CONSTRAINT demon_skill_pk PRIMARY KEY(demon_id, skill_id)
+);

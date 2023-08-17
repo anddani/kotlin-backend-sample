@@ -16,12 +16,14 @@ dependencies {
     implementation(libs.dagger.api)
     implementation(libs.hikari)
     kapt(libs.dagger.compiler)
+    implementation("app.cash.sqldelight:jdbc-driver:2.0.0")
 
     testImplementation(libs.junit)
     testImplementation(libs.truth)
     testImplementation(libs.coroutines.test)
-
-    implementation("app.cash.sqldelight:jdbc-driver:2.0.0")
+    testImplementation("app.cash.sqldelight:jdbc-driver:2.0.0")
+    testImplementation(libs.testcontainers)
+    testImplementation(libs.postgres)
 }
 
 sqldelight {

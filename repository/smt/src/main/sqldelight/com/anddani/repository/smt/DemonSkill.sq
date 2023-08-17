@@ -1,15 +1,19 @@
 
-CREATE TABLE demon_skill (
-    demon_id INTEGER REFERENCES demon(id),
-    skill_id INTEGER REFERENCES skill(id),
-    CONSTRAINT demon_skill_pk PRIMARY KEY(demon_id, skill_id)
-);
-
 insertDemonWithSkill {
-INSERT INTO demon(name) VALUES (:demon_name);
-INSERT INTO skill(name, cost) VALUES (:skill_name, :skill_cost);
-INSERT INTO demon_skill (demon_id, skill_id)
-SELECT demon.id, skill.id
-FROM demon, skill
-WHERE demon.name = :demon_name AND skill.name = :skill_name;
+    INSERT INTO demon(name) VALUES (:demon_name) ON CONFLICT (name) DO NOTHING;
+    INSERT INTO skill(name, cost) VALUES (:skill_name, :skill_cost) ON CONFLICT (name) DO NOTHING;
+
+    INSERT INTO demon_skill (demon_id, skill_id)
+    SELECT demon.id, skill.id
+    FROM demon, skill
+    WHERE demon.name = :demon_name AND skill.name = :skill_name
+    ON CONFLICT (demon_id, skill_id) DO NOTHING;
 }
+
+selectAll:
+SELECT demon.name AS demon_name,
+       skill.name AS skill_name,
+       skill.cost AS skill_cost
+FROM demon_skill AS ds
+INNER JOIN demon ON demon.id = ds.demon_id
+INNER JOIN skill ON skill.id = ds.skill_id;

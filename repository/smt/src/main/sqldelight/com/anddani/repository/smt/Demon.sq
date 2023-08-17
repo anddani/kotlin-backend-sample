@@ -1,5 +1,3 @@
 
-CREATE TABLE demon(
-    id SERIAL PRIMARY KEY ON CONFLICT IGNORE,
-    name VARCHAR(50) NOT NULL
-);
+selectAll:
+SELECT * FROM demon;
