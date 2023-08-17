@@ -1,6 +1,6 @@
 package com.anddani.common
 
-sealed interface ApiError <T> {
+sealed interface ApiError <out T> {
     object UnexpectedError : ApiError<Nothing>
     data class FailedToParse(val statusCode: Int) : ApiError<Nothing>
     data class ServerError(

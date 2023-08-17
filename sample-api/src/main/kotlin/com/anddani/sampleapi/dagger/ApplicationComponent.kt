@@ -2,6 +2,7 @@ package com.anddani.sampleapi.dagger
 
 import com.anddani.client.smt.SmtApiClientModule
 import com.anddani.client.smt.SmtHttpClientModule
+import com.anddani.common.InternalApiError
 import com.anddani.repository.smt.SmtDatabaseModule
 import com.anddani.repository.smt.SmtRepositoryModule
 import com.anddani.sampleapi.ApiRoute
@@ -24,5 +25,5 @@ import javax.inject.Singleton
 )
 interface ApplicationComponent {
     val smtService: SmtService
-    val routes: Set<ApiRoute<*, *>>
+    val routes: Set<@JvmSuppressWildcards ApiRoute<*, InternalApiError>>
 }
