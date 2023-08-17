@@ -4,6 +4,7 @@ import com.anddani.client.smt.SmtApiClient
 import com.anddani.client.smt.data.RemoteDemon
 import com.anddani.common.FetchAndPersistDemonError
 import com.anddani.repository.smt.SmtRepository
+import com.anddani.service.smt.data.Demon
 import com.github.michaelbull.result.Result
 import com.github.michaelbull.result.coroutines.binding.binding
 import com.github.michaelbull.result.mapError
@@ -23,4 +24,7 @@ class SmtServiceImpl @Inject constructor(
 
         repository.insertDemonsWithSkills(demons.toDemonWithSkills())
     }
+
+    override fun searchDemons(query: String): List<Demon> =
+        repository.selectDemonsWithName(query).toDemons()
 }

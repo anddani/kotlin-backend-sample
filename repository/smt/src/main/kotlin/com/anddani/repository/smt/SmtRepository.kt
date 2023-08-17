@@ -8,4 +8,5 @@ data class DemonWithSkill(
 
 interface SmtRepository {
     fun insertDemonsWithSkills(demonWithSkills: List<DemonWithSkill>)
+    fun selectDemonsWithName(query: String): List<SelectWithName>
 }

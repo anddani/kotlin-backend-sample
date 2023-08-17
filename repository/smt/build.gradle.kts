@@ -17,6 +17,8 @@ dependencies {
     implementation(libs.hikari)
     kapt(libs.dagger.compiler)
     implementation("app.cash.sqldelight:jdbc-driver:2.0.0")
+    implementation(libs.testcontainers)
+    implementation(libs.postgres)
 
     testImplementation(libs.junit)
     testImplementation(libs.truth)

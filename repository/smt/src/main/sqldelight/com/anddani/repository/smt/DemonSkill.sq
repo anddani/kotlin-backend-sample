@@ -17,3 +17,13 @@ SELECT demon.name AS demon_name,
 FROM demon_skill AS ds
 INNER JOIN demon ON demon.id = ds.demon_id
 INNER JOIN skill ON skill.id = ds.skill_id;
+
+selectWithName:
+SELECT demon.id AS demon_id,
+       demon.name AS demon_name,
+       skill.name AS skill_name,
+       skill.cost AS skill_cost
+FROM demon
+INNER JOIN demon_skill AS ds ON demon.id = ds.demon_id
+INNER JOIN skill ON skill.id = ds.skill_id
+WHERE LOWER(demon.name) LIKE ('%' || :query || '%');

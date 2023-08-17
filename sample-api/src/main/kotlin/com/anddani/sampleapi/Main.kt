@@ -7,17 +7,18 @@ import io.ktor.server.netty.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun main(args: Array<String>) {
+fun main() {
     println("Starting server...")
     val applicationComponent = DaggerApplicationComponent.builder().build()
+    val routes = applicationComponent.routes
     val smtService = applicationComponent.smtService
     embeddedServer(Netty, 8080) {
         routing {
             get("/") {
                 call.respondText("Hello world!")
             }
-            get("/search") {
-                val query = call.request.queryParameters["q"]
+            get("/sync") {
+                smtService.fetchAndPersistDemons()
             }
         }
     }.start(wait = true)

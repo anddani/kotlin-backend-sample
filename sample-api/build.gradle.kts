@@ -23,6 +23,7 @@ dependencies {
     implementation(libs.hikari)
     kapt(libs.dagger.compiler)
 
+    implementation(project(":common"))
     implementation(project(":client:smt"))
     implementation(project(":repository:smt"))
     implementation(project(":service:smt"))

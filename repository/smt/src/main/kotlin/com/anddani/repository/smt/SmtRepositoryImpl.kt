@@ -20,4 +20,9 @@ class SmtRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override fun selectDemonsWithName(query: String): List<SelectWithName> {
+        return smtDb.demonSkillQueries.selectWithName(query)
+            .executeAsList()
+    }
 }
