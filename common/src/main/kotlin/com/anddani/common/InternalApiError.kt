@@ -3,7 +3,7 @@ package com.anddani.common
 sealed interface InternalApiError
 
 sealed class FetchAndPersistDemonError : InternalApiError {
-    data class Api(val apiError: ApiError<RemoteErrorBody>) : FetchAndPersistDemonError()
+    data class Api(val apiError: ApiError<GithubErrorBody>) : FetchAndPersistDemonError()
     object FailedToPersist : FetchAndPersistDemonError()
 }
 

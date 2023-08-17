@@ -1,7 +1,7 @@
 package com.anddani.client.smt
 
 import com.anddani.client.smt.data.RemoteDemon
-import com.anddani.common.RemoteErrorBody
+import com.anddani.common.GithubErrorBody
 import com.anddani.common.ApiError
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
@@ -109,7 +109,7 @@ class SmtApiClientTest {
             .isEqualTo(Err(ApiError.ClientError(
                 statusCode = HttpStatusCode.BadRequest.value,
                 statusMessage = HttpStatusCode.BadRequest.description,
-                body = RemoteErrorBody(
+                body = GithubErrorBody(
                     errorId = 17,
                 ),
             )))
