@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SyncRoute @Inject constructor(
+class GetSyncRoute @Inject constructor(
     private val smtService: SmtService,
 ) : ApiRoute<Unit, InternalApiError> {
 

@@ -10,13 +10,13 @@ import dagger.multibindings.IntoSet
 interface RouteModule {
     @Binds
     @IntoSet
-    fun SearchRoute.bindSearchRoute(): ApiRoute<*, InternalApiError>
+    fun GetSearchRoute.bindGetSearchRoute(): ApiRoute<*, InternalApiError>
 
     @Binds
     @IntoSet
-    fun RootRoute.bindRootRoute(): ApiRoute<*, InternalApiError>
+    fun GetRootRoute.bindGetRootRoute(): ApiRoute<*, InternalApiError>
 
     @Binds
     @IntoSet
-    fun SyncRoute.bindSyncRoute(): ApiRoute<*, InternalApiError>
+    fun GetSyncRoute.bindGetSyncRoute(): ApiRoute<*, InternalApiError>
 }

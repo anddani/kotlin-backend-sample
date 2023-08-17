@@ -14,7 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SearchRoute @Inject constructor(
+class GetSearchRoute @Inject constructor(
     private val smtService: SmtService
 ) : ApiRoute<List<Demon>, InternalApiError> {
 

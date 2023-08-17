@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RootRoute @Inject constructor(
+class GetRootRoute @Inject constructor(
 ) : ApiRoute<String, Nothing> {
 
     override val path: String = "/"
