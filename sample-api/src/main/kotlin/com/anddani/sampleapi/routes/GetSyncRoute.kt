@@ -13,13 +13,13 @@ import javax.inject.Singleton
 @Singleton
 class GetSyncRoute @Inject constructor(
     private val smtService: SmtService,
-) : ApiRoute<Unit, InternalApiError> {
+) : ApiRoute<Nothing?, InternalApiError> {
 
     override val path: String = "/sync"
     override val method: HttpMethod = HttpMethod.Get
 
-    override suspend fun go(request: ApplicationRequest): Result<Pair<HttpStatusCode, Unit>, InternalApiError> = binding {
+    override suspend fun go(request: ApplicationRequest): Result<Pair<HttpStatusCode, Nothing?>, InternalApiError> = binding {
         smtService.fetchAndPersistDemons().bind()
-        HttpStatusCode.OK to Unit
+        HttpStatusCode.OK to null
     }
 }

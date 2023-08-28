@@ -1,6 +1,10 @@
 package com.anddani.sampleapi
 
 import com.anddani.common.InternalApiError
+import com.anddani.common.responses.ListBody
+import com.anddani.common.responses.ObjectBody
+import com.anddani.common.responses.StringBody
+import com.anddani.common.responses.SuccessBody
 import com.anddani.sampleapi.dagger.DaggerApplicationComponent
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
@@ -34,16 +38,23 @@ fun main() {
     }.start(wait = true)
 }
 
-private fun  Result<Pair<HttpStatusCode, Any?>, InternalApiError>.toMessage(): Pair<HttpStatusCode, Any?> =
+private fun  Result<Pair<HttpStatusCode, SuccessBody?>, InternalApiError>.toMessage(): Pair<HttpStatusCode, SuccessBody?> =
     when (this) {
         is Ok -> this.value
         is Err -> error.toMessage()
     }
 
-private suspend fun Pair<HttpStatusCode, Any?>.respond(call: ApplicationCall) {
-    val (statusCode: HttpStatusCode, message: Any?) = this
+private suspend fun Pair<HttpStatusCode, SuccessBody?>.respond(call: ApplicationCall) {
+    val (statusCode: HttpStatusCode, message: SuccessBody?) = this
     if (message != null) {
-        call.respond(statusCode, message)
+        call.respond(
+            status = statusCode,
+            message = when(message) {
+                is ListBody -> message.body
+                is ObjectBody -> message.body
+                is StringBody -> message.body
+            }
+        )
     } else {
         call.respond(statusCode)
     }

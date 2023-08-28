@@ -1,10 +1,12 @@
 package com.anddani.sampleapi
 
 import com.anddani.common.*
+import com.anddani.common.responses.SuccessBody
+import com.anddani.common.responses.toSuccessBody
 import io.ktor.http.*
 
 // Here would be a good opportunity to log errors
-internal fun InternalApiError.toMessage(): Pair<HttpStatusCode, JsonSerializable?> = when (this) {
+internal fun InternalApiError.toMessage(): Pair<HttpStatusCode, SuccessBody?> = when (this) {
     is FetchAndPersistDemonError.Api -> when (apiError) {
         is ApiError.ClientError -> HttpStatusCode.InternalServerError to null
         is ApiError.FailedToParse -> HttpStatusCode.InternalServerError to null
@@ -17,5 +19,5 @@ internal fun InternalApiError.toMessage(): Pair<HttpStatusCode, JsonSerializable
     SearchError.SearchQueryParamMissing -> HttpStatusCode.BadRequest to ApiErrorBody(
         id = "SE1",
         message = "query parameter 'q' missing from request"
-    )
+    ).toSuccessBody()
 }

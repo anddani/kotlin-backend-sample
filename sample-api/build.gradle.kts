@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.8.21"
     kotlin("kapt")
+    kotlin("plugin.serialization") version "1.8.21"
     application
 }
 
@@ -18,6 +19,7 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
+    implementation(libs.ktor.serialization)
     implementation(libs.kotlin.result)
     implementation(libs.dagger.api)
     implementation(libs.hikari)
