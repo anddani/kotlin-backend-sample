@@ -1,6 +1,6 @@
 package com.anddani.sampleapi.routes
 
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.sampleapi.ApiRoute
 import dagger.Binds
 import dagger.Module

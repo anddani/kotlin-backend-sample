@@ -1,12 +1,9 @@
-package com.anddani.common
+package com.anddani.common.errors
 
-sealed interface InternalApiError
+import com.anddani.common.ApiError
+import com.anddani.common.GithubErrorBody
 
 sealed class FetchAndPersistDemonError : InternalApiError {
     data class Api(val apiError: ApiError<GithubErrorBody>) : FetchAndPersistDemonError()
     object FailedToPersist : FetchAndPersistDemonError()
-}
-
-sealed class SearchError : InternalApiError {
-    object SearchQueryParamMissing : SearchError()
 }

@@ -1,6 +1,6 @@
 package com.anddani.sampleapi.routes
 
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.sampleapi.ApiRoute
 import com.anddani.service.smt.SmtService
 import com.github.michaelbull.result.Result

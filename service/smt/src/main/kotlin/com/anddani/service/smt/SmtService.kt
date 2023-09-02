@@ -1,6 +1,6 @@
 package com.anddani.service.smt
 
-import com.anddani.common.FetchAndPersistDemonError
+import com.anddani.common.errors.FetchAndPersistDemonError
 import com.anddani.service.smt.data.Demon
 import com.github.michaelbull.result.Result
 

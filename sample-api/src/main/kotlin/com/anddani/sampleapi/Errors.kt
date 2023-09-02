@@ -1,6 +1,8 @@
 package com.anddani.sampleapi
 
 import com.anddani.common.*
+import com.anddani.common.errors.FetchAndPersistDemonError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.common.responses.SuccessBody
 import com.anddani.common.responses.toSuccessBody
 import io.ktor.http.*
@@ -14,9 +16,9 @@ internal fun InternalApiError.toMessage(): Pair<HttpStatusCode, SuccessBody?> = 
         ApiError.UnexpectedError -> HttpStatusCode.InternalServerError to null
     }
 
-    FetchAndPersistDemonError.FailedToPersist -> HttpStatusCode.InternalServerError to null
+    com.anddani.common.errors.FetchAndPersistDemonError.FailedToPersist -> HttpStatusCode.InternalServerError to null
 
-    SearchError.SearchQueryParamMissing -> HttpStatusCode.BadRequest to ApiErrorBody(
+    com.anddani.common.errors.SearchError.SearchQueryParamMissing -> HttpStatusCode.BadRequest to ApiErrorBody(
         id = "SE1",
         message = "query parameter 'q' missing from request"
     ).toSuccessBody()

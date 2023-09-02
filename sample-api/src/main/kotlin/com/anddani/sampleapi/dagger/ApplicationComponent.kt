@@ -2,7 +2,7 @@ package com.anddani.sampleapi.dagger
 
 import com.anddani.client.smt.SmtApiClientModule
 import com.anddani.client.smt.SmtHttpClientModule
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.repository.smt.SmtDatabaseModule
 import com.anddani.repository.smt.SmtRepositoryModule
 import com.anddani.sampleapi.ApiRoute

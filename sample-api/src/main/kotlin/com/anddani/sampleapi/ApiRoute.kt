@@ -1,6 +1,6 @@
 package com.anddani.sampleapi
 
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.common.responses.SuccessBody
 import com.github.michaelbull.result.Result
 import io.ktor.http.*

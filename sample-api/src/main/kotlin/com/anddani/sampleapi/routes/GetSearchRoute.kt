@@ -1,8 +1,8 @@
 package com.anddani.sampleapi.routes
 
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.common.JsonSerializable
-import com.anddani.common.SearchError
+import com.anddani.common.errors.SearchError
 import com.anddani.common.responses.ListBody
 import com.anddani.common.responses.toSuccessBody
 import com.anddani.sampleapi.ApiRoute

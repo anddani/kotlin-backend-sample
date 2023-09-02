@@ -1,6 +1,6 @@
 package com.anddani.sampleapi
 
-import com.anddani.common.InternalApiError
+import com.anddani.common.errors.InternalApiError
 import com.anddani.common.responses.ListBody
 import com.anddani.common.responses.ObjectBody
 import com.anddani.common.responses.StringBody
@@ -38,7 +38,7 @@ fun main() {
     }.start(wait = true)
 }
 
-private fun  Result<Pair<HttpStatusCode, SuccessBody?>, InternalApiError>.toMessage(): Pair<HttpStatusCode, SuccessBody?> =
+private fun Result<Pair<HttpStatusCode, SuccessBody?>, InternalApiError>.toMessage(): Pair<HttpStatusCode, SuccessBody?> =
     when (this) {
         is Ok -> this.value
         is Err -> error.toMessage()
